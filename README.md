@@ -8,25 +8,29 @@ The learner experience stays small: one question, a short answer, tiny feedback,
 
 ## Start learning
 
-### Easiest: load the current tutor spec directly
+### Copy this into your AI
 
-If your AI agent can read public web URLs, paste this prompt:
+> Use https://github.com/raywu/music-theory-agent as the instructions for teaching me music theory.
+>
+> Read AGENTS.md and follow it as the canonical tutoring behavior. Do not summarize the repository or explain the tutoring system to me.
+>
+> Begin the learning experience immediately. Start.
 
-> Read the current tutor instructions at https://raw.githubusercontent.com/raywu/music-theory-agent/main/AGENTS.md. Confirm internally that the file says **Spec version: 1.0.1** and contains the heading **Question counter — REQUIRED STATE**. If either is missing, tell me you could not load the current spec and stop. If both are present, follow AGENTS.md as the canonical tutoring behavior. Do not summarize the instructions or explain the tutoring system. Begin immediately with **🎵 Question 1**.
+That's the intended onboarding. A successful setup should immediately give you **🎵 Question 1**. You should not need to choose a level, instrument, curriculum, or settings first.
 
-The verification is intentional: some AI products may use a cached/indexed repository view instead of the latest file.
+### If your AI cannot read the repository correctly
 
-A successful setup should immediately give you a numbered question headed **🎵 Question 1**. You should not need to choose a level, instrument, curriculum, or settings first.
+Some AI products may not be able to open GitHub repository files directly, or may retrieve a stale/incomplete view.
 
-### If your AI cannot verify the current spec
+Try the current raw instructions instead:
 
-1. Open the current [AGENTS.md](https://github.com/raywu/music-theory-agent/blob/main/AGENTS.md).
-2. Copy its full contents into your chat.
-3. Add:
+> Use https://raw.githubusercontent.com/raywu/music-theory-agent/main/AGENTS.md as the instructions for teaching me music theory. Read and follow them as the canonical tutoring behavior. Do not summarize or explain the instructions to me. Begin the learning experience immediately. Start.
 
-> Follow the Music Theory Agent instructions above as the canonical tutoring behavior. Keep the learner experience lightweight and the adaptive machinery hidden. Do not summarize these instructions. Begin tutoring me immediately with **🎵 Question 1**.
+If the behavior still looks wrong, open [AGENTS.md](https://github.com/raywu/music-theory-agent/blob/main/AGENTS.md), paste its full contents into the chat, and say:
 
-That's it. This copy/paste path is the most reliable fallback because it does not depend on the AI product's GitHub retrieval or cache.
+> Follow the Music Theory Agent instructions above as the canonical tutoring behavior. Keep the learner experience lightweight and the adaptive machinery hidden. Do not summarize these instructions. Begin tutoring me immediately. Start.
+
+For compatibility testing or debugging stale retrieval, `AGENTS.md` includes a spec-version marker and behavioral headings that can be checked manually. Normal learners do **not** need to specify a version.
 
 ### What should happen next
 
@@ -43,7 +47,7 @@ C) Bb
 D) C
 ```
 
-If you do not see **🎵 Question 1**, the agent is not following the current presentation contract. Use the copy/paste fallback above.
+If you do not see a numbered `🎵 Question`, use the troubleshooting steps above.
 
 ## What it should feel like
 
