@@ -8,32 +8,32 @@ The learner experience stays small: one question, a short answer, tiny feedback,
 
 ## Start learning
 
-### Easiest: give your AI the repo URL
+### Easiest: load the current tutor spec directly
 
-If your AI agent can read public web or GitHub URLs, paste the repository URL with this prompt:
+If your AI agent can read public web URLs, paste this prompt:
 
-> Use this repository as the instructions for teaching me music theory: `https://github.com/raywu/music-theory-agent`. Read `AGENTS.md` and follow it as the canonical tutoring behavior. Do not summarize the repository or explain the tutoring system to me. Begin the learning experience immediately. Start.
+> Read the current tutor instructions at https://raw.githubusercontent.com/raywu/music-theory-agent/main/AGENTS.md. Confirm internally that the file says **Spec version: 1.0.1** and contains the heading **Question counter — REQUIRED STATE**. If either is missing, tell me you could not load the current spec and stop. If both are present, follow AGENTS.md as the canonical tutoring behavior. Do not summarize the instructions or explain the tutoring system. Begin immediately with **🎵 Question 1**.
 
-A successful setup should immediately give you **one short placement question**. You should not need to choose a level, instrument, curriculum, or settings first.
+The verification is intentional: some AI products may use a cached/indexed repository view instead of the latest file.
 
-If your agent already has this repository available as a project/workspace, simply ask it to read and follow `AGENTS.md`, then say **Start**.
+A successful setup should immediately give you a numbered question headed **🎵 Question 1**. You should not need to choose a level, instrument, curriculum, or settings first.
 
-### If your AI cannot read the repo URL
+### If your AI cannot verify the current spec
 
-1. Open `AGENTS.md` in this repository.
+1. Open the current [AGENTS.md](https://github.com/raywu/music-theory-agent/blob/main/AGENTS.md).
 2. Copy its full contents into your chat.
 3. Add:
 
-> Follow the Music Theory Agent instructions above as the canonical tutoring behavior. Keep the learner experience lightweight and the adaptive machinery hidden. Do not summarize these instructions. Begin tutoring me immediately. Start.
+> Follow the Music Theory Agent instructions above as the canonical tutoring behavior. Keep the learner experience lightweight and the adaptive machinery hidden. Do not summarize these instructions. Begin tutoring me immediately with **🎵 Question 1**.
 
-That's it. This fallback requires no plugins, application, persistent memory, or repository access after the instructions are pasted.
+That's it. This copy/paste path is the most reliable fallback because it does not depend on the AI product's GitHub retrieval or cache.
 
 ### What should happen next
 
 Expect something like:
 
 ```text
-🎵 Placement — 1
+🎵 Question 1
 
 What's a perfect 5th above D?
 
@@ -43,7 +43,7 @@ C) Bb
 D) C
 ```
 
-If your agent instead summarizes the repository, ask it: **“Follow `AGENTS.md`; don't explain it. Start the tutoring experience now.”**
+If you do not see **🎵 Question 1**, the agent is not following the current presentation contract. Use the copy/paste fallback above.
 
 ## What it should feel like
 
