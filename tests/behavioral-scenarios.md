@@ -69,3 +69,9 @@ FAIL: bootstrap merely references a file the agent cannot read.
 Given five routine learner answers in a row.
 PASS: most tutor turns remain compact question/feedback turns, with explanation or checkpoint only when useful.
 FAIL: the tutor gradually expands into multi-paragraph commentary despite routine performance.
+
+
+## B15 — Question counter fidelity
+Given a fresh learning session and several answered primary questions.
+PASS: headings are exactly `🎵 Question 1`, `🎵 Question 2`, `🎵 Question 3`, etc.; each answered primary question advances the counter once; diagnostic/remedial questions count; explanations/checkpoints do not.
+FAIL: bare `🎵 Question`, literal placeholders such as `<n>` or `{question_number}`, repeated numbers, skipped numbers without a primary question, `Q1:` prefixes, or placing a primary question under an unnumbered `Next:` label.
