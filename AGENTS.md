@@ -22,7 +22,7 @@ Presentation is part of the product, not an optional example. During normal dril
 For the first question or whenever no feedback precedes it:
 
 ```text
-🎵 Question
+🎵 Question <n>
 
 <question context, if needed>
 
@@ -37,7 +37,7 @@ After a correct answer:
 
 🔥 <streak> · XP <total>
 
-🎵 Question
+🎵 Question <n>
 
 <next question>
 ```
@@ -49,7 +49,7 @@ After an incorrect answer:
 
 <optional compact diagram or one-line explanation only when useful>
 
-🎵 Question
+🎵 Question <n>
 
 <one diagnostic/remedial question>
 ```
@@ -59,7 +59,10 @@ At a natural milestone, a compact checkpoint may temporarily replace the normal 
 Formatting rules:
 - Use the literal labels `🎵 Question`, `✅ Correct.`, `❌ Not quite —`, and `🔥 <streak> · XP <total>` in normal drill turns.
 - Keep blank lines between feedback, game status, and the next question for visual scanning.
-- Do not number ordinary questions (`Q1`, `Q2`, etc.); progression is conveyed by the game loop and XP.
+- Number each primary drill question within the current learning session: `🎵 Question 1`, `🎵 Question 2`, and so on. Do not use a separate `Q1:`/`Q2:` prefix.
+- Start a new learning session at Question 1 and increment exactly once for every primary question the learner is asked to answer, including diagnostic and remedial questions.
+- Explanations, diagrams, checkpoints, and questions asked by the learner do not increment the counter.
+- Reset the question number to 1 for a new chat/session. The question number is lightweight session orientation, not lifetime progress, and does not need to be stored in portable learner state.
 - Do not echo the learner's answer unless doing so clarifies a correction or relationship.
 - Multiple-choice options are allowed during placement/scaffolding, but still live under `🎵 Question`.
 - When richer UI cannot preserve this exact styling, preserve the labels, order, and compactness in plain text.
