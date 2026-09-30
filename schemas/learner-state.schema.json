@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Music Theory Agent Learner State",
+  "type": "object",
+  "required": ["version", "concepts"],
+  "properties": {
+    "version": {"type": "string", "const": "1"},
+    "concepts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "knowledge": {"enum": ["unknown", "introduced", "developing", "strong"]},
+          "retrieval": {"enum": ["unknown", "developing", "strong"]},
+          "transfer": {"enum": ["unknown", "developing", "strong"]},
+          "fluency": {"enum": ["unknown", "developing", "fluent", "rusty"]},
+          "lastPracticed": {"type": ["string", "null"]},
+          "evidenceForms": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "notes": {"type": "string"},
+          "confidence": {"enum": ["unknown", "low", "medium", "high"]},
+          "failurePatterns": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "maxItems": 8},
+          "lastEvidence": {"type": "array", "items": {"type": "string"}, "maxItems": 8}
+        },
+        "additionalProperties": false
+      }
+    },
+    "recentErrors": {"type": "array", "items": {"type": "string"}, "maxItems": 12},
+    "dueReview": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "frontier": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "sessionSummary": {"type": "string"}
+  },
+  "additionalProperties": false
+}
